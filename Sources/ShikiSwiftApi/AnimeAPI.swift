@@ -71,7 +71,7 @@ class AnimeAPI {
         public let x48: String
     }
     
-    public struct Anime: Codable {
+    public struct Anime: Codable, Identifiable {
         let id: Int
         let name, russian, url, kind: String
         let image: ImagesURL
@@ -80,7 +80,7 @@ class AnimeAPI {
         public let aired_on, released_on: String?
     }
     
-    struct AnimeInfo: Codable {
+    struct AnimeInfo: Codable, Identifiable {
         let id: Int
         let name, russian: String
         let image: ImagesURL
