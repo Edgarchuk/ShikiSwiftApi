@@ -104,16 +104,16 @@ class AnimeAPI {
         let userRate: Float?
     }
     
-    let site = "https://shikimori.one/api/"
+    static let site = "https://shikimori.one/api/"
     
-    public func getAnimes(withParametors parameters: SearchParameters? = nil) async throws -> [Anime] {
+    public static func getAnimes(withParametors parameters: SearchParameters? = nil) async throws -> [Anime] {
         let dataTask = AF.request(site + "animes",method: .get, parameters: parameters,
                                   encoder: URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(boolEncoding: .literal)))
             .serializingDecodable([Anime].self)
         return try await dataTask.value
     }
     
-    public func getAnime(withId id: uint) async throws -> AnimeInfo {
+    public static func getAnime(withId id: uint) async throws -> AnimeInfo {
         let dataTask = AF.request(site + "animes/\(id)",method: .get)
             .serializingDecodable(AnimeInfo.self)
         return try await dataTask.value
