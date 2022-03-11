@@ -1,3 +1,5 @@
 # ShikiSwiftApi
 
-A description of this package.
+An unofficial implementation of the Shikimori API
+
+Version: 0.1
