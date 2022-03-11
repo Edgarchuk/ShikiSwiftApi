@@ -2,7 +2,7 @@
 import Foundation
 import Alamofire
 
-class AnimeAPI {
+public class AnimeAPI {
     public struct SearchParameters: Encodable {
         
         public enum OrderType: Encodable {
@@ -72,36 +72,36 @@ class AnimeAPI {
     }
     
     public struct Anime: Codable, Identifiable {
-        let id: Int
-        let name, russian, url, kind: String
-        let image: ImagesURL
-        let score, status: String
-        let episodes, episodesAired: Int?
+        public let id: Int
+        public let name, russian, url, kind: String
+        public let image: ImagesURL
+        public let score, status: String
+        public let episodes, episodesAired: Int?
         public let aired_on, released_on: String?
     }
     
-    struct AnimeInfo: Codable, Identifiable {
-        let id: Int
-        let name, russian: String
-        let image: ImagesURL
-        let url: String
-        let kind: KindType?
-        let score: String
-        let status: StatusType?
-        let episodes, episodesAired: Int?
-        let airedOn, releasedOn: String?
-        let rating: RatingType?
-        let english, japanese: [String]
-        let synonyms: [String]
-        let licenseNameRu: String?
-        let duration: DurationType?
-        let animeInfoDescription, descriptionHTML, descriptionSource, franchise: String?
-        let favoured: Bool?
-        let threadID, topicID, myanimelistID: Int?
-        let ratesScoresStats, ratesStatusesStats: [String]?
-        let updatedAt, nextEpisodeAt: String?
-//        let genres, studios, videos, screenshots: [String]
-        let userRate: Float?
+    public struct AnimeInfo: Codable, Identifiable {
+        public let id: Int
+        public let name, russian: String
+        public let image: ImagesURL
+        public let url: String
+        public let kind: KindType?
+        public let score: String
+        public let status: StatusType?
+        public let episodes, episodesAired: Int?
+        public let airedOn, releasedOn: String?
+        public let rating: RatingType?
+        public let english, japanese: [String]
+        public let synonyms: [String]
+        public let licenseNameRu: String?
+        public let duration: DurationType?
+        public let animeInfoDescription, descriptionHTML, descriptionSource, franchise: String?
+        public let favoured: Bool?
+        public let threadID, topicID, myanimelistID: Int?
+        public let ratesScoresStats, ratesStatusesStats: [String]?
+        public let updatedAt, nextEpisodeAt: String?
+//        public let genres, studios, videos, screenshots: [String]
+        public let userRate: Float?
     }
     
     let site = "https://shikimori.one/api/"
