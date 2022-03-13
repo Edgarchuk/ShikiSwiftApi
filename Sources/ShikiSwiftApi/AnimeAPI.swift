@@ -17,6 +17,8 @@ public class AnimeAPI {
             case random
         }
         
+        public init () {}
+        
         public var limit: Int?
         public var page: Int?
         public var order: OrderType?
