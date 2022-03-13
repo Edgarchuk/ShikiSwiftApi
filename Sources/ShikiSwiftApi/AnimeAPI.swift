@@ -65,10 +65,11 @@ public class AnimeAPI {
     }
     
     public struct ImagesURL: Codable {
-        public let original: String
-        public let preview: String
-        public let x96: String
-        public let x48: String
+        public typealias ImageURL = String
+        public let original: ImageURL
+        public let preview: ImageURL
+        public let x96: ImageURL
+        public let x48: ImageURL
     }
     
     public struct Anime: Codable, Identifiable {
