@@ -7,10 +7,9 @@ final class ShikiSwiftApiTests: XCTestCase {
         _ = try await AnimeAPI.getAnimes(withParametors: nil)
     }
     
-    func testLoadImage() async throws {
-        if let firstAnime = try await AnimeAPI.getAnimes(withParametors: nil).first {
-            let image = NSImage(data: try await firstAnime.image.preview.loadImage())
-            assert(image != nil)
+    func testCreateURLForImage() async throws {
+        if let image = try await AnimeAPI.getAnimes(withParametors: nil).first?.image {
+            _ = image.original.toURL()
         }
     }
 }
