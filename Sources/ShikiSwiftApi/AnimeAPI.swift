@@ -80,7 +80,7 @@ public class AnimeAPI {
         public let image: ImagesURL
         public let score, status: String
         public let episodes, episodesAired: Int?
-        public let aired_on, released_on: String?
+        public let aired_on, released_on: Date?
     }
     
     public struct AnimeInfo: Codable, Identifiable {
@@ -92,17 +92,17 @@ public class AnimeAPI {
         public let score: String
         public let status: StatusType?
         public let episodes, episodesAired: Int?
-        public let airedOn, releasedOn: String?
+        public let airedOn, releasedOn: Date?
         public let rating: RatingType?
-        public let english, japanese: [String]
-        public let synonyms: [String]
-        public let licenseNameRu: String?
-        public let duration: DurationType?
+        public let english, japanese: [String]?
+        public let synonyms: [String]?
+        public let licenseNameRu: [String]?
+        public let duration: Int?
         public let animeInfoDescription, descriptionHTML, descriptionSource, franchise: String?
         public let favoured: Bool?
         public let threadID, topicID, myanimelistID: Int?
-        public let ratesScoresStats, ratesStatusesStats: [String]?
-        public let updatedAt, nextEpisodeAt: String?
+//        public let ratesScoresStats, ratesStatusesStats: [String]?
+        public let updatedAt, nextEpisodeAt: Anime?
 //        public let genres, studios, videos, screenshots: [String]
         public let userRate: Float?
     }
@@ -112,14 +112,13 @@ public class AnimeAPI {
     public static func getAnimes(withParametors parameters: SearchParameters? = nil) async throws -> [Anime] {
         let dataTask = AF.request(site + "animes",method: .get, parameters: parameters,
                                   encoder: URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(boolEncoding: .literal)))
-            .serializingDecodable([Anime].self)
-        return try await dataTask.value
+            .serializingData()
+        return try JSONDecoder.defaultDateDecoder.decode([Anime].self, from: try await dataTask.value)
     }
     
     public static func getAnime(withId id: uint) async throws -> AnimeInfo {
-        let dataTask = AF.request(site + "animes/\(id)",method: .get)
-            .serializingDecodable(AnimeInfo.self)
-        return try await dataTask.value
+        let dataTask = AF.request(site + "animes/\(id)",method: .get).serializingData()
+        return try JSONDecoder.defaultDateDecoder.decode(AnimeInfo.self, from: try await dataTask.value)
     }
 }
 
