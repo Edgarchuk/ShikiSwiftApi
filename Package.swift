@@ -26,6 +26,10 @@ let package = Package(
         
         .testTarget(
             name: "ShikiSwiftApiTests",
-            dependencies: ["ShikiSwiftApi"]),
+            dependencies: ["ShikiSwiftApi"],
+            resources: [
+                .process("AnimesData.json"),
+                .process("AnimeDetail.json")
+            ]),
     ]
 )
