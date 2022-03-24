@@ -81,7 +81,7 @@ public class AnimeAPI {
         public let image: ImagesURL
         public let score, status: String
         public let episodes, episodesAired: Int?
-        public let aired_on, released_on: Date?
+        public let airedOn, releasedOn: Date?
     }
     
     public struct AnimeInfo: Codable, Identifiable {

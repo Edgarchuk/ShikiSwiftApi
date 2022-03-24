@@ -11,6 +11,7 @@ extension AnimeAPI.ImagesURL.ImageURL {
 extension JSONDecoder {
     static var defaultDateDecoder: JSONDecoder {
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .custom { decoder in
             let formatter = DateFormatter()
             let container = try decoder.singleValueContainer()
