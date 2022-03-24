@@ -76,7 +76,8 @@ public class AnimeAPI {
     
     public struct Anime: Codable, Identifiable {
         public let id: Int
-        public let name, russian, url, kind: String
+        public let name, russian, url: String
+        public let kind: KindType
         public let image: ImagesURL
         public let score, status: String
         public let episodes, episodesAired: Int?
